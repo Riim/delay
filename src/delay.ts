@@ -1,4 +1,4 @@
-import { interval, TUnit } from '@riim/interval';
+import { duration, TUnit } from '@riim/duration';
 
 export function delay(value: number): Promise<void>;
 export function delay(value: number, unit: TUnit): Promise<void>;
@@ -9,7 +9,7 @@ export function delay(value: number | `${number}${TUnit}`, unit?: TUnit): Promis
 			() => {
 				resolve(undefined);
 			},
-			typeof value == 'string' ? interval(value) : unit !== undefined ? interval(value, unit) : value
+			typeof value == 'string' ? duration(value) : unit !== undefined ? duration(value, unit) : value
 		);
 	});
 }
